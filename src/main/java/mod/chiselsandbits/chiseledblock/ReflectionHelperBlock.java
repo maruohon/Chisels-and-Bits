@@ -46,7 +46,8 @@ class ReflectionHelperBlock extends Block
 			final @Nullable BlockPos pos,
 			final @Nullable AxisAlignedBB p_185477_4_,
 			final @Nullable List<AxisAlignedBB> p_185477_5_,
-			final @Nullable Entity p_185477_6_ )
+			final @Nullable Entity p_185477_6_,
+			final boolean p_185477_7_ )
 	{
 		markMethod();
 	}

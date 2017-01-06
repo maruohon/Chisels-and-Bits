@@ -631,7 +631,8 @@ public class BlockChiseled extends Block implements ITileEntityProvider, IMultiS
 			final BlockPos pos,
 			final AxisAlignedBB mask,
 			final List<AxisAlignedBB> list,
-			final Entity collidingEntity )
+			final Entity collidingEntity,
+			final boolean p_185477_7_ )
 	{
 		try
 		{
