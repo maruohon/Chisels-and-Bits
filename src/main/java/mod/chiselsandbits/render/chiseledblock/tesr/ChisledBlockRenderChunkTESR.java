@@ -94,7 +94,7 @@ public class ChisledBlockRenderChunkTESR extends TileEntitySpecialRenderer<TileE
 
 	private static WorldTracker getTracker()
 	{
-		final World w = ClientSide.instance.getPlayer().worldObj;
+		final World w = ClientSide.instance.getPlayer().world;
 		WorldTracker t = worldTrackers.get( w );
 
 		if ( t == null )

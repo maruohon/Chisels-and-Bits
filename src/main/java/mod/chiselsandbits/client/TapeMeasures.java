@@ -190,7 +190,7 @@ public class TapeMeasures
 			// NOT 100% Accurate, if anyone wants to try and resolve this, yay
 			chatMsg.setStyle( new Style().setColor( newMeasure.color.chatColor ) );
 
-			player.addChatComponentMessage( chatMsg );
+			player.sendMessage( chatMsg );
 		}
 
 		measures.add( newMeasure );

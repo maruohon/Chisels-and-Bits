@@ -157,7 +157,7 @@ public class ItemChiseledBit extends Item implements IItemScrollWheel, IChiselMo
 			final Set<String> extra = new HashSet<String>();
 			if ( blk != null && state != null )
 			{
-				for ( final IProperty<?> p : state.getPropertyNames() )
+				for ( final IProperty<?> p : state.getPropertyKeys() )
 				{
 					if ( p.getName().equals( "axis" ) || p.getName().equals( "facing" ) )
 					{

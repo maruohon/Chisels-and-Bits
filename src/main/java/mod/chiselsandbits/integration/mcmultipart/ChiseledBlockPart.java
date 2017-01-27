@@ -132,7 +132,7 @@ public class ChiseledBlockPart extends Multipart implements INormallyOccludingPa
 		}
 
 		// update tile stats..
-		inner.setWorldObj( getWorld() );
+		inner.setWorld( getWorld() );
 		inner.setPos( getPos() );
 
 		if ( !( inner.occlusionState instanceof MultipartContainerWrapper ) )
@@ -213,7 +213,7 @@ public class ChiseledBlockPart extends Multipart implements INormallyOccludingPa
 			final ItemStack stack = getTile().getItemStack( player );
 			final EntityItem item = new EntityItem( world, x, y, z, stack );
 			item.setDefaultPickupDelay();
-			world.spawnEntityInWorld( item );
+			world.spawnEntity( item );
 		}
 
 		getContainer().removePart( this );
@@ -265,7 +265,7 @@ public class ChiseledBlockPart extends Multipart implements INormallyOccludingPa
 	{
 		final NBTTagCompound tag = new NBTTagCompound();
 		getTile().writeChisleData( tag );
-		buf.writeNBTTagCompoundToBuffer( tag );
+		buf.writeCompoundTag( tag );
 	}
 
 	@Override
@@ -274,7 +274,7 @@ public class ChiseledBlockPart extends Multipart implements INormallyOccludingPa
 	{
 		try
 		{
-			final NBTTagCompound tag = buf.readNBTTagCompoundFromBuffer();
+			final NBTTagCompound tag = buf.readCompoundTag();
 			getTile().readChisleData( tag );
 		}
 		catch ( final IOException e )

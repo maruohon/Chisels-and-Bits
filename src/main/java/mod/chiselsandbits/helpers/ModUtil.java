@@ -57,7 +57,7 @@ public class ModUtil
 	static public EnumFacing getPlaceFace(
 			final EntityLivingBase placer )
 	{
-		return EnumFacing.getHorizontal( MathHelper.floor_double( placer.rotationYaw * 4.0F / 360.0F + 0.5D ) & 3 ).getOpposite();
+		return EnumFacing.getHorizontal( MathHelper.floor( placer.rotationYaw * 4.0F / 360.0F + 0.5D ) & 3 ).getOpposite();
 	}
 
 	static public Pair<Vec3d, Vec3d> getPlayerRay(
@@ -322,7 +322,7 @@ public class ModUtil
 		// not going to lie, this is really stupid.
 		if ( world instanceof ChunkCache )
 		{
-			return ( (ChunkCache) world ).func_190300_a( pos, Chunk.EnumCreateEntityType.CHECK );
+			return ( (ChunkCache) world ).getTileEntity( pos, Chunk.EnumCreateEntityType.CHECK );
 		}
 
 		// also stupid...
@@ -417,13 +417,13 @@ public class ModUtil
 		if ( is != null && !player.inventory.addItemStackToInventory( is ) )
 		{
 			ei.setEntityItemStack( is );
-			world.spawnEntityInWorld( ei );
+			world.spawnEntity( ei );
 		}
 		else
 		{
 			if ( !ei.isSilent() )
 			{
-				ei.worldObj.playSound( (EntityPlayer) null, ei.posX, ei.posY, ei.posZ, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, ( ( itemRand.nextFloat() - itemRand.nextFloat() ) * 0.7F + 1.0F ) * 2.0F );
+				ei.world.playSound( (EntityPlayer) null, ei.posX, ei.posY, ei.posZ, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, ( ( itemRand.nextFloat() - itemRand.nextFloat() ) * 0.7F + 1.0F ) * 2.0F );
 			}
 		}
 

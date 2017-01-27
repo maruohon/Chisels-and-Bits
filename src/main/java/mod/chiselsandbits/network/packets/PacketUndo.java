@@ -65,11 +65,11 @@ public class PacketUndo extends ModPacket
 		buffer.writeBlockPos( pos );
 
 		final byte[] bef = before.getByteArray();
-		buffer.writeVarIntToBuffer( bef.length );
+		buffer.writeVarInt( bef.length );
 		buffer.writeBytes( bef );
 
 		final byte[] aft = after.getByteArray();
-		buffer.writeVarIntToBuffer( aft.length );
+		buffer.writeVarInt( aft.length );
 		buffer.writeBytes( aft );
 	}
 
@@ -79,11 +79,11 @@ public class PacketUndo extends ModPacket
 	{
 		pos = buffer.readBlockPos();
 
-		final int lena = buffer.readVarIntFromBuffer();
+		final int lena = buffer.readVarInt();
 		final byte[] ta = new byte[lena];
 		buffer.readBytes( ta );
 
-		final int lenb = buffer.readVarIntFromBuffer();
+		final int lenb = buffer.readVarInt();
 		final byte[] tb = new byte[lenb];
 		buffer.readBytes( tb );
 

@@ -121,7 +121,7 @@ public class UndoTracker implements ICacheClearable
 		}
 		else
 		{
-			ClientSide.instance.getPlayer().addChatMessage( new TextComponentTranslation( "mod.chiselsandbits.result.nothing_to_undo" ) );
+			ClientSide.instance.getPlayer().sendMessage( new TextComponentTranslation( "mod.chiselsandbits.result.nothing_to_undo" ) );
 		}
 	}
 
@@ -151,7 +151,7 @@ public class UndoTracker implements ICacheClearable
 		}
 		else
 		{
-			ClientSide.instance.getPlayer().addChatMessage( new TextComponentTranslation( "mod.chiselsandbits.result.nothing_to_redo" ) );
+			ClientSide.instance.getPlayer().sendMessage( new TextComponentTranslation( "mod.chiselsandbits.result.nothing_to_redo" ) );
 		}
 	}
 
@@ -210,7 +210,7 @@ public class UndoTracker implements ICacheClearable
 	public boolean ignorePlayer(
 			final EntityPlayer player )
 	{
-		return player.worldObj == null || !player.worldObj.isRemote || FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER;
+		return player.world == null || !player.world.isRemote || FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER;
 	}
 
 	public void beginGroup(
@@ -258,7 +258,7 @@ public class UndoTracker implements ICacheClearable
 	{
 		for ( final String err : errors )
 		{
-			ClientSide.instance.getPlayer().addChatMessage( new TextComponentTranslation( err ) );
+			ClientSide.instance.getPlayer().sendMessage( new TextComponentTranslation( err ) );
 		}
 
 		errors.clear();

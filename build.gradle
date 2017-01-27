@@ -33,7 +33,7 @@ dependencies {
 minecraft {
     version = "${mc_version}-${forge_version}"
     runDir = "eclipse"
-    mappings = "snapshot_20160518"
+    mappings = "stable_29"
     replaceIn "ChiselsAndBits.java"
     replace "@VERSION@", project.version
 }

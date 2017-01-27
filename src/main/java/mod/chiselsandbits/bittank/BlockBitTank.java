@@ -68,7 +68,7 @@ public class BlockBitTank extends Block implements ITileEntityProvider
 	}
 
 	@Override
-	public IBlockState onBlockPlaced(
+	public IBlockState getStateForPlacement(
 			final World worldIn,
 			final BlockPos pos,
 			final EnumFacing facing,

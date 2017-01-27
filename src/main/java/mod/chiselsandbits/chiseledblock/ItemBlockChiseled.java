@@ -234,7 +234,7 @@ public class ItemBlockChiseled extends ItemBlock implements IVoxelBlobItem, IIte
 		else if ( canPlaceBlockHere( worldIn, pos, side, playerIn, stack ) )
 		{
 			final int i = this.getMetadata( stack.getMetadata() );
-			final IBlockState iblockstate1 = this.block.onBlockPlaced( worldIn, pos, side, hitX, hitY, hitZ, i, playerIn );
+			final IBlockState iblockstate1 = this.block.getStateForPlacement( worldIn, pos, side, hitX, hitY, hitZ, i, playerIn, stack );
 
 			if ( placeBlockAt( stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ, iblockstate1 ) )
 			{

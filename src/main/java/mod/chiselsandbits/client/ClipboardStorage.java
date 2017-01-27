@@ -45,7 +45,7 @@ public class ClipboardStorage extends Configuration
 				final PacketBuffer b = new PacketBuffer( Unpooled.buffer() );
 
 				b.writeString( Item.REGISTRY.getNameForObject( i.getItem() ).toString() );
-				b.writeNBTTagCompoundToBuffer( nbt );
+				b.writeCompoundTag( nbt );
 
 				final int[] o = new int[b.writerIndex()];
 				for ( int x = 0; x < b.writerIndex(); x++ )
@@ -83,8 +83,8 @@ public class ClipboardStorage extends Configuration
 			{
 				final PacketBuffer b = new PacketBuffer( Unpooled.wrappedBuffer( o ) );
 
-				final String item = b.readStringFromBuffer( 127 );
-				final NBTTagCompound c = b.readNBTTagCompoundFromBuffer();
+				final String item = b.readString( 127 );
+				final NBTTagCompound c = b.readCompoundTag();
 
 				final ItemStack stack = new ItemStack( Item.getByNameOrId( item ) );
 				stack.setTagCompound( c );

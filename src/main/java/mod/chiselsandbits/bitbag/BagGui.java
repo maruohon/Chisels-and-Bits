@@ -162,8 +162,8 @@ public class BagGui extends GuiContainer
 
 			if ( isMouseOverSlot( slot, mouseX, mouseY ) && slot.canBeHovered() )
 			{
-				final int xDisplayPos = slot.xDisplayPosition;
-				final int yDisplayPos = slot.yDisplayPosition;
+				final int xDisplayPos = slot.xPos;
+				final int yDisplayPos = slot.yPos;
 				theSlot = slot;
 
 				GlStateManager.disableLighting();

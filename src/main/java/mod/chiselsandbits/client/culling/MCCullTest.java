@@ -90,7 +90,7 @@ public class MCCullTest implements ICullTest, IBlockAccess
 	}
 
 	@Override
-	public Biome getBiomeGenForCoords(
+	public Biome getBiome(
 			final BlockPos pos )
 	{
 		return Biomes.PLAINS;

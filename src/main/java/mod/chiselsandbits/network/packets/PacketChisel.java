@@ -94,7 +94,7 @@ public class PacketChisel extends ModPacket
 	public int doAction(
 			final EntityPlayer who )
 	{
-		final World world = who.worldObj;
+		final World world = who.world;
 		final ActingPlayer player = ActingPlayer.actingAs( who, hand );
 
 		final int minX = Math.min( from.blockPos.getX(), to.blockPos.getX() );
@@ -256,9 +256,9 @@ public class PacketChisel extends ModPacket
 		to = readBitLoc( buffer );
 
 		place = buffer.readEnumValue( BitOperation.class );
-		side = EnumFacing.VALUES[buffer.readVarIntFromBuffer()];
-		mode = ChiselMode.values()[buffer.readVarIntFromBuffer()];
-		hand = EnumHand.values()[buffer.readVarIntFromBuffer()];
+		side = EnumFacing.VALUES[buffer.readVarInt()];
+		mode = ChiselMode.values()[buffer.readVarInt()];
+		hand = EnumHand.values()[buffer.readVarInt()];
 	}
 
 	@Override
@@ -269,9 +269,9 @@ public class PacketChisel extends ModPacket
 		writeBitLoc( to, buffer );
 
 		buffer.writeEnumValue( place );
-		buffer.writeVarIntToBuffer( side.ordinal() );
-		buffer.writeVarIntToBuffer( mode.ordinal() );
-		buffer.writeVarIntToBuffer( hand.ordinal() );
+		buffer.writeVarInt( side.ordinal() );
+		buffer.writeVarInt( mode.ordinal() );
+		buffer.writeVarInt( hand.ordinal() );
 	}
 
 	private BitLocation readBitLoc(

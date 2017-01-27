@@ -929,7 +929,7 @@ public final class VoxelBlob implements IVoxelSrc
 
 		final PacketBuffer header = new PacketBuffer( Unpooled.wrappedBuffer( bb ) );
 
-		final int version = header.readVarIntFromBuffer();
+		final int version = header.readVarInt();
 
 		BlobSerializer bs = null;
 
@@ -950,8 +950,8 @@ public final class VoxelBlob implements IVoxelSrc
 			throw new RuntimeException( "Invalid Version: " + version );
 		}
 
-		final int byteOffset = header.readVarIntFromBuffer();
-		final int bytesOfInterest = header.readVarIntFromBuffer();
+		final int byteOffset = header.readVarInt();
+		final int bytesOfInterest = header.readVarInt();
 
 		final BitStream bits = BitStream.valueOf( byteOffset, ByteBuffer.wrap( bb.array(), header.readerIndex(), bytesOfInterest ) );
 		for ( int x = 0; x < array_size; x++ )
@@ -1010,7 +1010,7 @@ public final class VoxelBlob implements IVoxelSrc
 			final DeflaterOutputStream w = new DeflaterOutputStream( o, def, bestBufferSize );
 
 			final PacketBuffer pb = BlobSerilizationCache.getCachePacketBuffer();
-			pb.writeVarIntToBuffer( bs.getVersion() );
+			pb.writeVarInt( bs.getVersion() );
 			bs.write( pb );
 
 			final BitStream set = BlobSerilizationCache.getCacheBitStream();
@@ -1023,8 +1023,8 @@ public final class VoxelBlob implements IVoxelSrc
 			final int bytesToWrite = arrayContents.length;
 			final int byteOffset = set.byteOffset();
 
-			pb.writeVarIntToBuffer( byteOffset );
-			pb.writeVarIntToBuffer( bytesToWrite - byteOffset );
+			pb.writeVarInt( byteOffset );
+			pb.writeVarInt( bytesToWrite - byteOffset );
 
 			w.write( pb.array(), 0, pb.writerIndex() );
 

@@ -28,7 +28,7 @@ public class SetBit extends CommandBase
 {
 
 	@Override
-	public String getCommandName()
+	public String getName()
 	{
 		return "setbit";
 	}
@@ -40,7 +40,7 @@ public class SetBit extends CommandBase
 	}
 
 	@Override
-	public String getCommandUsage(
+	public String getUsage(
 			final ICommandSender sender )
 	{
 		return "commands.setbit.usage";
@@ -116,7 +116,7 @@ public class SetBit extends CommandBase
 	}
 
 	@Override
-	public List<String> getTabCompletionOptions(
+	public List<String> getTabCompletions(
 			final MinecraftServer server,
 			final ICommandSender sender,
 			final String[] args,

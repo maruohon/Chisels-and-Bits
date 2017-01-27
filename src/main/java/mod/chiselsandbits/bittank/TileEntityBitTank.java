@@ -230,7 +230,7 @@ public class TileEntityBitTank extends TileEntity implements IItemHandler, IFlui
 	private void saveAndUpdate()
 	{
 		markDirty();
-		ModUtil.sendUpdate( worldObj, getPos() );
+		ModUtil.sendUpdate( world, getPos() );
 
 		final int lv = getLightValue();
 		if ( oldLV != lv )

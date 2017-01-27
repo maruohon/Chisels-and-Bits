@@ -36,7 +36,7 @@ public class PacketClearBagGui extends ModPacket
 	public void getPayload(
 			final PacketBuffer buffer )
 	{
-		buffer.writeItemStackToBuffer( stack );
+		buffer.writeItemStack( stack );
 		// no data...
 	}
 
@@ -46,7 +46,7 @@ public class PacketClearBagGui extends ModPacket
 	{
 		try
 		{
-			stack = buffer.readItemStackFromBuffer();
+			stack = buffer.readItemStack();
 		}
 		catch ( final IOException e )
 		{

@@ -55,7 +55,7 @@ public class PacketAccurateSneakPlace extends ModPacket
 				}
 
 				final IItemBlockAccurate ibc = (IItemBlockAccurate) stack.getItem();
-				ibc.doItemUse( inHand, playerEntity, playerEntity.worldObj, pos, hand, side, hitX, hitY, hitZ );
+				ibc.doItemUse( inHand, playerEntity, playerEntity.world, pos, hand, side, hitX, hitY, hitZ );
 
 				if ( !playerEntity.capabilities.isCreativeMode && inHand.stackSize <= 0 )
 				{
@@ -69,7 +69,7 @@ public class PacketAccurateSneakPlace extends ModPacket
 	public void getPayload(
 			final PacketBuffer buffer )
 	{
-		buffer.writeItemStackToBuffer( stack );
+		buffer.writeItemStack( stack );
 		buffer.writeBlockPos( pos );
 		buffer.writeEnumValue( side );
 		buffer.writeEnumValue( hand );
@@ -84,7 +84,7 @@ public class PacketAccurateSneakPlace extends ModPacket
 	{
 		try
 		{
-			stack = buffer.readItemStackFromBuffer();
+			stack = buffer.readItemStack();
 			pos = buffer.readBlockPos();
 			side = buffer.readEnumValue( EnumFacing.class );
 			hand = buffer.readEnumValue( EnumHand.class );

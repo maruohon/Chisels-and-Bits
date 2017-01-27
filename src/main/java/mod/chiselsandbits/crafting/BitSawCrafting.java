@@ -156,20 +156,20 @@ public class BitSawCrafting implements IRecipe
 		switch ( direction )
 		{
 			case X:
-				split_pos = MathHelper.clamp_int( ( box.maxX + box.minX ) / 2, 0, 15 );
+				split_pos = MathHelper.clamp( ( box.maxX + box.minX ) / 2, 0, 15 );
 				scale = ( box.maxX - box.minX ) / 2;
 				break;
 			case Y:
-				split_pos = MathHelper.clamp_int( ( box.maxY + box.minY ) / 2, 0, 15 );
+				split_pos = MathHelper.clamp( ( box.maxY + box.minY ) / 2, 0, 15 );
 				scale = ( box.maxY - box.minY ) / 2;
 				break;
 			case Z:
-				split_pos = MathHelper.clamp_int( ( box.maxZ + box.minZ ) / 2, 0, 15 );
+				split_pos = MathHelper.clamp( ( box.maxZ + box.minZ ) / 2, 0, 15 );
 				scale = ( box.maxZ - box.minZ ) / 2;
 				break;
 		}
 
-		final int split_pos_plus_one = MathHelper.clamp_int( split_pos + 1, 0, 15 );
+		final int split_pos_plus_one = MathHelper.clamp( split_pos + 1, 0, 15 );
 
 		final BitIterator bi = new BitIterator();
 		while ( bi.hasNext() )

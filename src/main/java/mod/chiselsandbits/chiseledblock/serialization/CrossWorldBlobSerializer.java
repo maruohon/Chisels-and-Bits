@@ -36,8 +36,8 @@ public class CrossWorldBlobSerializer extends BlobSerializer
 	protected int readStateID(
 			final PacketBuffer buffer )
 	{
-		final String name = buffer.readStringFromBuffer( 2047 );
-		buffer.readStringFromBuffer( 2047 );
+		final String name = buffer.readString( 2047 );
+		buffer.readString( 2047 );
 
 		final String parts[] = name.split( "[?&]" );
 
@@ -131,7 +131,7 @@ public class CrossWorldBlobSerializer extends BlobSerializer
 			stateName.append( '?' );
 
 			boolean first = true;
-			for ( final IProperty<?> P : state.getPropertyNames() )
+			for ( final IProperty<?> P : state.getPropertyKeys() )
 			{
 				if ( !first )
 				{

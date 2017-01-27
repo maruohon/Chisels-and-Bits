@@ -177,7 +177,7 @@ public class ModelUtil implements ICacheClearable
 
 		}
 
-		final IBakedModel secondModel = model.getOverrides().handleItemState( model, ModUtil.getItemFromBlock( state ), Minecraft.getMinecraft().theWorld, Minecraft.getMinecraft().thePlayer );
+		final IBakedModel secondModel = model.getOverrides().handleItemState( model, ModUtil.getItemFromBlock( state ), Minecraft.getMinecraft().world, Minecraft.getMinecraft().player );
 
 		if ( secondModel != null )
 		{
@@ -323,7 +323,7 @@ public class ModelUtil implements ICacheClearable
 			final ItemStack is = ModUtil.getItemFromBlock( state );
 			if ( is != null )
 			{
-				final IBakedModel itemModel = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides( is, Minecraft.getMinecraft().theWorld, Minecraft.getMinecraft().thePlayer );
+				final IBakedModel itemModel = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides( is, Minecraft.getMinecraft().world, Minecraft.getMinecraft().player );
 				return itemModel;
 			}
 		}

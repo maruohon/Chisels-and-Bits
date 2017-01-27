@@ -34,13 +34,13 @@ public class JsonModelExport extends CommandBase
 	}
 
 	@Override
-	public String getCommandName()
+	public String getName()
 	{
 		return "c&b.exportmodel";
 	}
 
 	@Override
-	public String getCommandUsage(
+	public String getUsage(
 			final ICommandSender sender )
 	{
 		return "chiselsandbits.commands.exportjsonmodel.usage";
@@ -111,11 +111,11 @@ public class JsonModelExport extends CommandBase
 
 			final String modelJSON = output.toString();
 			GuiScreen.setClipboardString( modelJSON );
-			sender.addChatMessage( new TextComponentString( "Json Posted to Clipboard" ) );
+			sender.sendMessage( new TextComponentString( "Json Posted to Clipboard" ) );
 		}
 		else
 		{
-			sender.addChatMessage( new TextComponentString( "No Item in Hand." ) );
+			sender.sendMessage( new TextComponentString( "No Item in Hand." ) );
 		}
 	}
 

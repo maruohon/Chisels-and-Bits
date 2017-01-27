@@ -247,7 +247,7 @@ public final class VoxelBlobStateInstance implements Comparable<VoxelBlobStateIn
 					arrayPeek.read( peekBytes );
 
 					final PacketBuffer header = new PacketBuffer( Unpooled.wrappedBuffer( peekBytes ) );
-					format = header.readVarIntFromBuffer();
+					format = header.readVarInt();
 				}
 				catch ( final IOException e )
 				{

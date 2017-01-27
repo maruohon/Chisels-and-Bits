@@ -148,7 +148,7 @@ public class ItemChisel extends ItemTool implements IItemScrollWheel, IChiselMod
 					return true;
 				}
 
-				if ( !player.worldObj.isRemote )
+				if ( !player.world.isRemote )
 				{
 					return true;
 				}
@@ -160,7 +160,7 @@ public class ItemChisel extends ItemTool implements IItemScrollWheel, IChiselMod
 				final RayTraceResult mop = player.worldObj.getBlockState( pos ).getBlock().collisionRayTrace( player.worldObj.getBlockState( pos ), player.worldObj, pos, ray_from, ray_to );
 				if ( mop != null && mop.typeOfHit == RayTraceResult.Type.BLOCK )
 				{
-					useChisel( mode, player, player.worldObj, pos, mop.sideHit, (float) ( mop.hitVec.xCoord - pos.getX() ), (float) ( mop.hitVec.yCoord - pos.getY() ), (float) ( mop.hitVec.zCoord - pos.getZ() ), hand );
+					useChisel( mode, player, player.world, pos, mop.sideHit, (float) ( mop.hitVec.xCoord - pos.getX() ), (float) ( mop.hitVec.yCoord - pos.getY() ), (float) ( mop.hitVec.zCoord - pos.getZ() ), hand );
 				}
 			}
 

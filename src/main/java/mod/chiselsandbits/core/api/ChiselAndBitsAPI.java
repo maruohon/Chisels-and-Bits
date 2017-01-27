@@ -298,7 +298,7 @@ public class ChiselAndBitsAPI implements IChiselAndBitsAPI
 			else if ( !player.inventory.addItemStackToInventory( is ) )
 			{
 				ei.setEntityItemStack( is );
-				player.getEntityWorld().spawnEntityInWorld( ei );
+				player.getEntityWorld().spawnEntity( ei );
 			}
 		}
 	}

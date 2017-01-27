@@ -36,7 +36,7 @@ public class ChiselModeManager
 
 			if ( !itemNameModeDisplay )
 			{
-				newClientChiselMode.setMode( Minecraft.getMinecraft().thePlayer.getHeldItemMainhand() );
+				newClientChiselMode.setMode( Minecraft.getMinecraft().player.getHeldItemMainhand() );
 			}
 
 			NetworkRouter.instance.sendToServer( packet );
@@ -54,7 +54,7 @@ public class ChiselModeManager
 
 			if ( originalMode != newClientChiselMode && chatNotification )
 			{
-				Minecraft.getMinecraft().thePlayer.addChatComponentMessage( new TextComponentTranslation( newClientChiselMode.getName().toString() ) );
+				Minecraft.getMinecraft().player.sendMessage( new TextComponentTranslation( newClientChiselMode.getName().toString() ) );
 			}
 
 			ReflectionWrapper.instance.clearHighlightedStack();

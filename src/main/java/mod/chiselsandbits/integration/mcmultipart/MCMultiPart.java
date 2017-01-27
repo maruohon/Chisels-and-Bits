@@ -139,7 +139,7 @@ public class MCMultiPart extends IntegrationBase implements IMCMultiPart
 					final TileEntityBlockChiseled tx = part.getTile();
 					tx.occlusionState = new MultipartContainerBuilder( w, pos, part, container );
 					part.setContainer( container );
-					tx.setWorldObj( w );
+					tx.setWorld( w );
 					tx.setPos( pos );
 					return tx;
 				}
@@ -147,7 +147,7 @@ public class MCMultiPart extends IntegrationBase implements IMCMultiPart
 				{
 					final TileEntityBlockChiseled tx = part.getTile();
 					part.setContainer( container );
-					tx.setWorldObj( w );
+					tx.setWorld( w );
 					tx.setPos( pos );
 					return tx;
 				}

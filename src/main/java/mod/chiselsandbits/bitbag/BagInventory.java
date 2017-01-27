@@ -166,7 +166,7 @@ public class BagInventory implements IInventory
 	}
 
 	@Override
-	public boolean isUseableByPlayer(
+	public boolean isUsableByPlayer(
 			final EntityPlayer player )
 	{
 		return true;
