@@ -238,8 +238,11 @@ public class ItemBlockChiseled extends ItemBlock implements IVoxelBlobItem, IIte
 
 			if ( placeBlockAt( stack, playerIn, worldIn, pos, side, hitX, hitY, hitZ, iblockstate1 ) )
 			{
-				worldIn.playSound( pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, this.block.getSoundType().getPlaceSound(), SoundCategory.BLOCKS, ( this.block.getSoundType().getVolume() + 1.0F ) / 2.0F,
-						this.block.getSoundType().getPitch() * 0.8F, false );
+				worldIn.playSound( pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+						this.block.getSoundType( state, worldIn, pos, playerIn ).getPlaceSound(),
+						SoundCategory.BLOCKS,
+						( this.block.getSoundType( state, worldIn, pos, playerIn ).getVolume() + 1.0F ) / 2.0F,
+						this.block.getSoundType( state, worldIn, pos, playerIn ).getPitch() * 0.8F, false );
 				--stack.stackSize;
 			}
 
@@ -299,7 +302,6 @@ public class ItemBlockChiseled extends ItemBlock implements IVoxelBlobItem, IIte
 
 			final IntegerBox modelBounds = source.getBounds();
 			BlockPos offset = partial == null ? new BlockPos( 0, 0, 0 ) : ModUtil.getPartialOffset( side, partial, modelBounds );
-			final BlockChiseled myBlock = (BlockChiseled) block;
 
 			if ( offset.getX() < 0 )
 			{
@@ -387,7 +389,7 @@ public class ItemBlockChiseled extends ItemBlock implements IVoxelBlobItem, IIte
 									final int commonBlock = blobs[x][y][z].getVoxelStats().mostCommonState;
 									if ( BlockChiseled.replaceWithChisled( world, bp, state, commonBlock, true ) )
 									{
-										final TileEntityBlockChiseled target = myBlock.getTileEntity( world, bp );
+										final TileEntityBlockChiseled target = BlockChiseled.getTileEntity( world, bp );
 										target.completeEditOperation( blobs[x][y][z] );
 									}
 

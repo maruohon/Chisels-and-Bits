@@ -1378,7 +1378,7 @@ public class ClientSide
 		final BlockPos pos = target.getBlockPos();
 		final float boxOffset = 0.1F;
 
-		AxisAlignedBB bb = world.getBlockState( pos ).getBlock().getSelectedBoundingBox( state, world, pos );
+		AxisAlignedBB bb = world.getBlockState( pos ).getSelectedBoundingBox( world, pos );
 
 		if ( bb == null )
 		{
@@ -1451,7 +1451,11 @@ public class ClientSide
 	{
 		final IBlockState state = ModUtil.getStateById( stateID );
 		final Block block = state.getBlock();
-		world.playSound( pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, block.getSoundType().getPlaceSound(), SoundCategory.BLOCKS, ( block.getSoundType().getVolume() + 1.0F ) / 16.0F, block.getSoundType().getPitch() * 0.9F, false );
+		world.playSound( pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+				block.getSoundType( state, world, pos, null ).getPlaceSound(),
+				SoundCategory.BLOCKS,
+				( block.getSoundType( state, world, pos, null ).getVolume() + 1.0F ) / 16.0F,
+				block.getSoundType( state, world, pos, null ).getPitch() * 0.9F, false );
 	}
 
 	public static void breakSound(
@@ -1461,7 +1465,11 @@ public class ClientSide
 	{
 		final IBlockState state = ModUtil.getStateById( extractedState );
 		final Block block = state.getBlock();
-		world.playSound( pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, block.getSoundType().getBreakSound(), SoundCategory.BLOCKS, ( block.getSoundType().getVolume() + 1.0F ) / 16.0F, block.getSoundType().getPitch() * 0.9F, false );
+		world.playSound( pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+				block.getSoundType( state, world, pos, null ).getBreakSound(),
+				SoundCategory.BLOCKS,
+				( block.getSoundType( state, world, pos, null ).getVolume() + 1.0F ) / 16.0F,
+				block.getSoundType( state, world, pos, null ).getPitch() * 0.9F, false );
 	}
 
 	private BitLocation drawStart;
@@ -1514,7 +1522,7 @@ public class ClientSide
 	{
 		if ( !state.getBlock().isAir( state, world, pos ) )
 		{
-			state = state.getBlock().getActualState( state, world, pos );
+			state = state.getActualState( world, pos);
 			final int StateID = ModUtil.getStateId( state );
 
 			final int i = 4;

@@ -742,8 +742,7 @@ public final class VoxelBlob implements IVoxelSrc
 
 		for ( final Entry<Integer, Integer> e : states.entrySet() )
 		{
-			final ItemChiseledBit bit = ChiselsAndBits.getItems().itemBlockBit;
-			final String name = bit.getBitTypeName( ItemChiseledBit.createStack( e.getKey(), 1, false ) );
+			final String name = ItemChiseledBit.getBitTypeName( ItemChiseledBit.createStack( e.getKey(), 1, false ) );
 
 			if ( name == null )
 			{

@@ -91,7 +91,7 @@ public class CrossWorldBlobSerializer extends BlobSerializer
 	}
 
 	@SuppressWarnings( { "unchecked", "rawtypes" } )
-	private IBlockState withState(
+	private <T extends Comparable<T>> IBlockState withState(
 			final IBlockState state,
 			final Block blk,
 			final String[] nameval )
@@ -103,7 +103,7 @@ public class CrossWorldBlobSerializer extends BlobSerializer
 			return state;
 		}
 
-		final Optional pv = prop.parseValue( nameval[1] );
+		final Optional<T> pv = prop.parseValue( nameval[1] );
 		if ( pv.isPresent() )
 		{
 			return state.withProperty( prop, pv.get() );

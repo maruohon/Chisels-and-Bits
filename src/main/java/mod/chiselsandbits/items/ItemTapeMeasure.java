@@ -90,7 +90,7 @@ public class ItemTapeMeasure extends Item implements IChiselModeItem, IItemScrol
 			final Vec3d ray_from = PlayerRay.getLeft();
 			final Vec3d ray_to = PlayerRay.getRight();
 
-			final RayTraceResult mop = playerIn.worldObj.getBlockState( pos ).getBlock().collisionRayTrace( playerIn.getEntityWorld().getBlockState( pos ), playerIn.worldObj, pos, ray_from, ray_to );
+			final RayTraceResult mop = playerIn.world.getBlockState( pos ).collisionRayTrace( playerIn.world, pos, ray_from, ray_to );
 			if ( mop != null && mop.typeOfHit == RayTraceResult.Type.BLOCK )
 			{
 				final BitLocation loc = new BitLocation( mop, true, BitOperation.CHISEL );
